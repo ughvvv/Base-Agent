@@ -1,0 +1,52 @@
+# Example Agent Configuration File
+
+agent_id: "example_agent_001"
+description: "An example agent demonstrating configuration."
+
+# Language Model Settings
+model_type: "gpt-3.5-turbo" # Replace with your desired model
+model_parameters:
+  max_tokens: 1500
+  temperature: 0.8
+  # Add other model-specific parameters here
+
+# Memory Settings
+memory_type: "file_based" # Options: 'in_memory', 'file_based', 'database' (future)
+memory_settings:
+  file_path: "memlog/example_agent_001_memory.json" # Required if memory_type is 'file_based'
+  # For database type, might include:
+  # connection_string: "postgresql://user:password@host:port/dbname"
+  # table_name: "agent_memory"
+
+# Logging Settings
+log_level: "INFO" # Options: 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+
+# Agent Capabilities
+tools:
+  - "web_search"
+  - "calculator"
+permissions:
+  - "read_files"
+  - "execute_code" # Be cautious with permissions
+
+# Error Handling Settings
+max_retries: 5
+retry_delay: 2.0 # Base delay in seconds for exponential backoff
+
+# --- Another Example Agent Configuration ---
+# You can define multiple agents in separate files or potentially
+# structure a single file differently if needed (e.g., a list of agents).
+
+# agent_id: "research_agent_002"
+# description: "Agent focused on web research."
+# model_type: "claude-3-opus"
+# model_parameters:
+#   max_tokens: 2000
+#   temperature: 0.5
+# memory_type: "in_memory"
+# memory_settings: {} # No specific settings needed for in_memory
+# log_level: "DEBUG"
+# tools: ["web_search", "summarizer"]
+# permissions: ["read_web_content"]
+# max_retries: 3
+# retry_delay: 1.5
